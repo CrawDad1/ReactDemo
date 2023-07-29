@@ -16,3 +16,4 @@ TODO: explain copy assignment via [...object]
 
 ## gh-pages
 TODO: explain github page deployment for react app
+[gh-pages deployment guide](https://github.com/gitname/react-gh-pages)
