@@ -1,8 +1,11 @@
 import React from "react";
 
-function Square({val}){
+function Square({chooseSquare, val}){
     return (
-        <div className="Square">
+        <div 
+        className="Square"
+        onClick={chooseSquare}
+        >
             {val}
         </div>
     );

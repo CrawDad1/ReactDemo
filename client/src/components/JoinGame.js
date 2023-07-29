@@ -9,6 +9,7 @@ function JoinGame(){
             <Game/>
         ):(
             <div className="JoinGame">
+                <p>succesfully Logged In! </p>
                 <button onClick={() => setGameStart(true)}>Join / Start Game</button>
             </div>
         )}
