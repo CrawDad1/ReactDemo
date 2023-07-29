@@ -18,6 +18,9 @@ solution: run `yarn add eslint-config-react-app -D`
     - once yarn has finished installing the reafct project...
     - in /client/, run command `yarn start`
     - if the react template webpage loads, the project has been initialized successfully
+
+>>> The `Yarn start` command is important to remember. It provides you with an automatically updating preview of your react app. The preview updates every time you save changes to source files. 
+
 ## packages
 use package manager to add the following packages: 
 client
@@ -31,6 +34,7 @@ client
 create components folder in client and the files
 - component/Login.js
 - component/SignUp.js
+- component/JoinGame.js
 
 inside each file, create the basic component structure like this:
 ```
@@ -43,7 +47,19 @@ function <COMPONENT NAME HERE>(){
 export default <COMPONENT NAME HERE>;
 ```
 
-## auth
-### SignUp
-### Login
+For now, these will be placeholders. We'll develop the client to run locally first, and add the server side services later on.
+
+
+# useStates and Dynamic Object Model Rendering
+
+TODO:
+
+# Anonymous Functions and Hooks
+
+TODO:
+
+
+# StyleSheets
+
+TODO:
 
