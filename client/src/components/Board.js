@@ -1,21 +1,81 @@
-import React, { useState } from "react";
-import Square from "./Square"
+import React, { useEffect, useState } from "react";
+import Square from "./Square";
+import { Patterns } from "../RowPatterns";
 
 function Board(){
-    const [Board, setBoard] = useState(["","","","","","","","",""])
+    const [Board, setBoard] = useState(["","","","","","","","",""]);
+    const [Turn, setTurn] = useState('X');
+    const [Result, setResult] = useState({winner:"none", winState : "none"})
+
+    useEffect(
+        (
+            ()=>{
+                    checkTie();
+                    checkWins();
+            }
+        ),[Board]
+    )
     
     const chooseSquare = (boardIndex)=>{
-        // dummy function to confirm action
-        let newBoard = [...Board];
-        newBoard[boardIndex]='X';
-        setBoard(newBoard);
+        // checks if move is valid first
+        if (Board[boardIndex]===""){
+            let newBoard = [...Board];
+            newBoard[boardIndex]= Turn;
+            setBoard(newBoard);
+
+            //then change player state
+            setTurn(
+                (Turn === 'X' ? 'O':'X')
+            );
+        }
         return;
     }
+
+    const checkWins = () => {
+        let foundWinner = true;
+        //.some method breaks the loop as soon as it returns true, continues otherwise
+        Patterns.forEach(( pattern ) => {
+            // save first player seen in pattern
+            const currPlayer = Board[pattern[0]];
+            if (currPlayer === ''){return;}
+            let foundWinner = true;
+            if (Board[pattern[1]] != currPlayer ||  Board[pattern[2]] != currPlayer){
+                //first square is blank, not a winner
+                // some square doesn't match first player, not winner
+                foundWinner=false;
+            }
+
+            if (foundWinner){
+                //winner found. update result state
+                setResult({ winner:Board[pattern[0]], winState:"won" });
+            }
+        });
+        return;
+    };
+
+    const checkTie = () =>{
+        const isNotFull = Board.some((square)=>{
+            return square === '';
+        })
+
+        if(!isNotFull){
+            //then board is full
+            // set win state to tie
+            setResult({winner: 'none', winState: "Tie"});
+        }
+        return;
+    }
+
     return (
         <div className="Board">
-            <p>
-                Game Board
-            </p>
+            <div>
+                <span>
+                    <div> Game Board </div>
+                    <div>Current Turn: {Turn}</div>
+                    <div>Winner: {Result.winner}</div>
+                    <div>Win state: {Result.winState}</div>
+                </span>
+            </div>
             <div className="row">
                 <Square chooseSquare={()=>{chooseSquare(0);}} val={Board[0]}/>
                 <Square chooseSquare={()=>{chooseSquare(1);}} val={Board[1]}/>
