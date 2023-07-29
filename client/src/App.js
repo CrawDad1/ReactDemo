@@ -9,22 +9,28 @@ import Cookies from "universal-cookie";
 function App() {
   const [isAuth, setIsAuth] = useState(false);
   return (
+    <>
     <div className="App">
           <button 
             className='LogOut'
             onClick={()=>{setIsAuth(false)}}
-            
-          >LogOut</button>
+          >
+            LogOut
+          </button>
+
           {isAuth===true ?(
             <JoinGame/>
           ):(
                 <>
-                <p>THIS IS THE HOME PAGE</p>
-                <Login setIsAuth={setIsAuth}/>
-                <SignUp setIsAuth={setIsAuth}/>
+                <p>Use Log in buttons to begin</p>
+                <div className='button-row'>
+                  <Login setIsAuth={setIsAuth}/>
+                  <SignUp setIsAuth={setIsAuth}/>
+                </div>
                 </>
           )}
     </div>
+    </>
   );
 }
 

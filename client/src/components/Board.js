@@ -2,16 +2,15 @@ import React, { useEffect, useState } from "react";
 import Square from "./Square";
 import { Patterns } from "../RowPatterns";
 
-function Board(){
+function Board({Result, setResult}){
     const [Board, setBoard] = useState(["","","","","","","","",""]);
     const [Turn, setTurn] = useState('X');
-    const [Result, setResult] = useState({winner:"none", winState : "none"})
 
     useEffect(
         (
             ()=>{
+                    if( checkWins()){return;}
                     checkTie();
-                    checkWins();
             }
         ),[Board]
     )
@@ -32,7 +31,7 @@ function Board(){
     }
 
     const checkWins = () => {
-        let foundWinner = true;
+        let winReturn = false;
         //.some method breaks the loop as soon as it returns true, continues otherwise
         Patterns.forEach(( pattern ) => {
             // save first player seen in pattern
@@ -48,9 +47,10 @@ function Board(){
             if (foundWinner){
                 //winner found. update result state
                 setResult({ winner:Board[pattern[0]], winState:"won" });
+                winReturn = true;
             }
         });
-        return;
+        return winReturn;
     };
 
     const checkTie = () =>{
@@ -71,9 +71,10 @@ function Board(){
             <div>
                 <span>
                     <div> Game Board </div>
-                    <div>Current Turn: {Turn}</div>
+                    {/* debug values */}
+                    {/* <div>Current Turn: {Turn}</div>
                     <div>Winner: {Result.winner}</div>
-                    <div>Win state: {Result.winState}</div>
+                    <div>Win state: {Result.winState}</div> */}
                 </span>
             </div>
             <div className="row">

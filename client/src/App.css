@@ -14,13 +14,15 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App button{
+  height: 10vh;
+  width: 10vw;
+  font-size: large;
+  background-color: #332b63;
+}
+
+.App .LogOut{
+  background-color: red;
 }
 
 .Board{
@@ -29,6 +31,16 @@
   border: 2px solid black;
   display: flex;
   flex-direction: column;
+}
+
+.game-over{
+  margin:0;
+  padding:0;
+  outline:0;
+  position:absolute;
+  top: 20%;
+  background-color: rgba(0, 0, 0, 70%);
+  justify-content: center;
 }
 
 .row{

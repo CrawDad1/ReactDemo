@@ -13,3 +13,6 @@ TODO: prevents functions from being ran when parsed
 
 ## Spread Operator
 TODO: explain copy assignment via [...object]
+
+## gh-pages
+TODO: explain github page deployment for react app
