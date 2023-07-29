@@ -1,6 +1,8 @@
 import './App.css';
+import JoinGame from './components/JoinGame';
 import Login from './components/Login';
-import SignUp from './components/SignUp'
+import SignUp from './components/SignUp';
+import Cookies from "universal-cookie";
 
 
 function App() {
@@ -10,7 +12,7 @@ function App() {
         THIS IS THE HOME PAGE
         <Login/>
         <SignUp/>
-        <button>Launch Game</button>
+        <JoinGame/>
       </header>
     </div>
   );

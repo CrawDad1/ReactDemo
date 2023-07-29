@@ -16,6 +16,13 @@ demo shows a tic-tac-toe game with a game state local to the browser
 TODO: 
 - server side game-state attached to userID of room creator
 - server side game-state that can trigger SSE and control flow
+#### game object
+game app
+    - overall game state (started, ended, who won)
+    - board
+        - turn-by-turn state (whose turn, turns taken, win? tie?)
+        - squares
+    - end game / restart buttons
 
 
 ## Server 
